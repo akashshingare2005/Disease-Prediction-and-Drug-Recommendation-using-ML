@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Disease Prediction & Drug Recommendation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🩺 Disease Prediction & Drug Recommendation System</h1>
+    <p>AI-powered health assistance</p>
+</header>
+
+<div class="container">
+
+    <!-- Symptoms Input -->
+    <div class="card">
+        <h2>Enter Symptoms</h2>
+        <textarea id="symptoms" placeholder="Example: fever,cough,headache"></textarea>
+        <button onclick="predictDisease()">Predict Disease</button>
+    </div>
+
+    <!-- Prediction Result -->
+    <div id="resultCard" class="card hidden">
+        <h2>Prediction Result</h2>
+        <p><b>Disease:</b> <span id="diseaseName"></span></p>
+        <p><b>Probability:</b> <span id="probability"></span>%</p>
+    </div>
+
+    <!-- Drug Recommendation -->
+    <div id="drugCard" class="card hidden">
+        <h2>Recommended Medicines</h2>
+        <ul id="drugList"></ul>
+    </div>
+
+    <!-- Medical History -->
+    <div class="card">
+        <h2>Medical History</h2>
+        <button onclick="loadHistory()">Load History</button>
+        <ul id="historyList"></ul>
+    </div>
+
+    <!-- PDF Report -->
+    <div class="card">
+        <h2>Medical Report</h2>
+        <button onclick="downloadPDF()">Download PDF Report</button>
+    </div>
+
+</div>
+
+<footer class="disclaimer">
+    ⚠️ <b>Important:</b> This AI system provides preliminary health predictions based on symptoms entered. 
+    It does not replace professional medical advice. Please consult a licensed healthcare provider 
+    for accurate diagnosis and treatment.
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>

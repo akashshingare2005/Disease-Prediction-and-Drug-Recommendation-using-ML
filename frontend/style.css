@@ -1,0 +1,143 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    color: white;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* CONTAINER */
+.container {
+    width: 85%;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 60px;
+}
+
+/* CARD */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* TEXTAREA */
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #4facfe;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+textarea:focus {
+    border-color: #00c6ff;
+    box-shadow: 0 0 10px rgba(0, 198, 255, 0.4);
+}
+
+/* BUTTON */
+button {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    transform: scale(1.05);
+}
+
+/* RESULT STYLING */
+#diseaseName {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0072ff;
+}
+
+#probability {
+    font-weight: 600;
+    color: #ff4b2b;
+}
+
+/* LIST */
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+    color: #0072ff;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* HIDDEN CLASS */
+.hidden {
+    display: none;
+}
+
+/* HISTORY SECTION */
+#historyList li {
+    font-size: 14px;
+}
+
+/* DISCLAIMER */
+.disclaimer {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    font-size: 13px;
+    color: #444;
+    border-top: 3px solid #00c6ff;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
