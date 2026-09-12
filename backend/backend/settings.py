@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-w6r!0d%ul7^t(nuje37nab$a2l8#9cko1zhf(3i1jjxd3h0*y8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'disease-prediction-and-drug-79y4.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -44,6 +48,7 @@ INSTALLED_APPS = [
     'api',
 ]
 
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,6 +62,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+# CORS
+# Allows the frontend to communicate with the backend.
 CORS_ALLOW_ALL_ORIGINS = True
 
 
@@ -75,7 +83,12 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'backend.wsgi.application'
+
+
+# Root URL configuration
+ROOT_URLCONF = 'backend.urls'
 
 
 # Database
@@ -121,11 +134,10 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+# Login URL
+
 LOGIN_URL = '/api/login/'
-
-ROOT_URLCONF = 'backend.urls'
-
-ALLOWED_HOSTS = []
