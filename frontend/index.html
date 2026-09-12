@@ -2,60 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Disease Prediction & Drug Recommendation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102b2d">
+    <title>Carewise | Health insight workspace</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="page-shell">
+        <header class="topbar">
+            <a class="brand" href="#top" aria-label="Carewise home">
+                <span class="brand-mark">+</span>
+                <span>carewise</span>
+            </a>
+            <div class="topbar-status"><span class="status-dot"></span> AI health workspace</div>
+            <button class="report-button" onclick="downloadPDF()"><span aria-hidden="true">↗</span> Export report</button>
+        </header>
 
-<header>
-    <h1>🩺 Disease Prediction & Drug Recommendation System</h1>
-    <p>AI-powered health assistance</p>
-</header>
+        <main id="top" class="container">
+            <section class="intro-row">
+                <div>
+                    <p class="eyebrow">YOUR FIRST HEALTH CHECK</p>
+                    <h1>Understand what your body<br><em>might be telling you.</em></h1>
+                    <p class="intro-copy">Share your symptoms in plain language. Carewise finds the closest pattern in your health model and helps you decide what to do next.</p>
+                </div>
+                <div class="trust-note"><span class="trust-icon">✦</span><span><strong>Private by design</strong><br>Saved locally in your browser</span></div>
+            </section>
 
-<div class="container">
+            <section class="workspace-grid">
+                <div class="input-panel panel">
+                    <div class="panel-heading">
+                        <div><span class="step-label">01 / SYMPTOMS</span><h2>How are you feeling?</h2></div>
+                        <span class="panel-icon">⌁</span>
+                    </div>
+                    <p class="panel-hint">Separate symptoms with commas for the clearest reading.</p>
+                    <textarea id="symptoms" aria-label="Enter your symptoms" placeholder="e.g. fever, dry cough, headache"></textarea>
+                    <div class="quick-picks" aria-label="Common symptoms">
+                        <span>Try a quick add</span>
+                        <button type="button" class="chip" onclick="addSymptom('fever')">fever</button>
+                        <button type="button" class="chip" onclick="addSymptom('cough')">cough</button>
+                        <button type="button" class="chip" onclick="addSymptom('headache')">headache</button>
+                        <button type="button" class="chip" onclick="addSymptom('fatigue')">fatigue</button>
+                    </div>
+                    <button id="predictButton" class="primary-button" onclick="predictDisease()"><span>Analyze symptoms</span><span class="button-arrow">→</span></button>
+                    <p class="input-footnote"><span aria-hidden="true">ⓘ</span> This is an early signal, not a medical diagnosis.</p>
+                </div>
 
-    <!-- Symptoms Input -->
-    <div class="card">
-        <h2>Enter Symptoms</h2>
-        <textarea id="symptoms" placeholder="Example: fever,cough,headache"></textarea>
-        <button onclick="predictDisease()">Predict Disease</button>
+                <div id="resultCard" class="result-panel panel hidden">
+                    <div class="result-topline"><span class="step-label">02 / INSIGHT</span><span class="result-badge">PRELIMINARY</span></div>
+                    <p class="result-caption">The closest pattern we found</p>
+                    <h2 id="diseaseName">—</h2>
+                    <div class="confidence-row"><div class="confidence-track"><span id="confidenceBar"></span></div><strong><span id="probability">0</span>%</strong></div>
+                    <p class="confidence-label">Model confidence</p>
+                    <div class="result-divider"></div>
+                    <p class="result-advice"><span>Next step</span> Review the care options below and speak with a licensed professional for confirmation.</p>
+                </div>
+                <div class="side-stat panel">
+                    <span class="stat-icon">◌</span><strong>Smart<br>triage</strong><p>Pattern-based insights<br>in a few seconds.</p>
+                </div>
+            </section>
+
+            <section id="drugCard" class="medicines-section hidden">
+                <div class="section-heading"><div><span class="step-label">03 / CARE OPTIONS</span><h2>Explore nearby care</h2></div><span class="section-note">Compare trusted retailers</span></div>
+                <div id="drugList" class="medicine-grid"></div>
+            </section>
+
+            <section class="lower-grid">
+                <div class="history-panel panel">
+                    <div class="section-heading compact"><div><span class="step-label">YOUR JOURNEY</span><h2>Recent checks</h2></div><button class="text-button" onclick="loadHistory()">Refresh <span>↻</span></button></div>
+                    <div id="historyList" class="history-list"><p class="empty-state">Your recent checks will appear here.</p></div>
+                </div>
+                <div class="safety-panel">
+                    <span class="safety-mark">!</span><div><span class="step-label">A NOTE FROM CAREWISE</span><h2>Use this as a starting point.</h2><p>For severe, sudden, or worsening symptoms, seek urgent medical care. Medicine links are provided for convenience and are not prescriptions.</p></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer"><span>carewise / health insight workspace</span><span>Not a substitute for professional medical advice</span></footer>
     </div>
-
-    <!-- Prediction Result -->
-    <div id="resultCard" class="card hidden">
-        <h2>Prediction Result</h2>
-        <p><b>Disease:</b> <span id="diseaseName"></span></p>
-        <p><b>Probability:</b> <span id="probability"></span>%</p>
-    </div>
-
-    <!-- Drug Recommendation -->
-    <div id="drugCard" class="card hidden">
-        <h2>Recommended Medicines</h2>
-        <ul id="drugList"></ul>
-    </div>
-
-    <!-- Medical History -->
-    <div class="card">
-        <h2>Medical History</h2>
-        <button onclick="loadHistory()">Load History</button>
-        <ul id="historyList"></ul>
-    </div>
-
-    <!-- PDF Report -->
-    <div class="card">
-        <h2>Medical Report</h2>
-        <button onclick="downloadPDF()">Download PDF Report</button>
-    </div>
-
-</div>
-
-<footer class="disclaimer">
-    ⚠️ <b>Important:</b> This AI system provides preliminary health predictions based on symptoms entered. 
-    It does not replace professional medical advice. Please consult a licensed healthcare provider 
-    for accurate diagnosis and treatment.
-</footer>
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
